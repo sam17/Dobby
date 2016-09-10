@@ -94,23 +94,12 @@ def backupDemo():
                 turnRight()
         elif (data.value=='7'):
                 stopBot()
-        
-        '''
-def alexaRun:
-        while(1):
-                data = aio.receive('GoTo1')
-                print('Received value: {0}'.format(data.value))
-                if(data.value=='1'):
-                        GPIO.output(3,True)
-                        GPIO.output(5,False)
-                elif(data.value=='2'):
-                        GPIO.output(5,True)
-                        GPIO.output(3,False)
-                time.sleep(1)
-'''
 
-try:
-        setup()
+def calibrateAngle():
+        turnZeroRight()
+        raw_input()
+
+def testWSAD():
         moveForward()
         time.sleep(1)
         stopBot()
@@ -135,6 +124,24 @@ try:
         time.sleep(1)
         stopBot()
         GPIO.cleanup()
+
+        '''
+def alexaRun:
+        while(1):
+                data = aio.receive('GoTo1')
+                print('Received value: {0}'.format(data.value))
+                if(data.value=='1'):
+                        GPIO.output(3,True)
+                        GPIO.output(5,False)
+                elif(data.value=='2'):
+                        GPIO.output(5,True)
+                        GPIO.output(3,False)
+                time.sleep(1)
+'''
+
+try:
+        setup()
+        calibrateAngle()
         
 except KeyboardInterrupt:
         GPIO.cleanup()  
