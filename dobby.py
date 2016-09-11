@@ -1,4 +1,5 @@
 from Adafruit_IO import Client
+
 import RPi.GPIO as GPIO
 import time
 
@@ -9,17 +10,27 @@ Motor2F = 15
 Motor2P = 13
 Motor2B = 11
 
-def setup():
-        GPIO.setmode(GPIO.BOARD)
-        GPIO.setup(Motor1F,GPIO.OUT)
-        GPIO.setup(Motor1B,GPIO.OUT)
-        GPIO.setup(Motor1P,GPIO.OUT)
-        GPIO.setup(Motor2F,GPIO.OUT)
-        GPIO.setup(Motor2B,GPIO.OUT)
-        GPIO.setup(Motor2P,GPIO.OUT)
-        aio = Client('47bc88002f0a4117a751a1074e25fa96')
-        GPIO.output(Motor1B,True)
-        GPIO.output(Motor2B,True)
+leftMotor = 0
+rightMotor = 0
+
+
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(Motor1F,GPIO.OUT)
+GPIO.setup(Motor1B,GPIO.OUT)
+GPIO.setup(Motor1P,GPIO.OUT)
+GPIO.setup(Motor2F,GPIO.OUT)
+GPIO.setup(Motor2B,GPIO.OUT)
+GPIO.setup(Motor2P,GPIO.OUT)
+aio = Client('47bc88002f0a4117a751a1074e25fa96')
+leftMotor = GPIO.PWM(Motor2P,100)
+rightMotor = GPIO.PWM(Motor1P,100)
+leftMotor.start(0)
+rightMotor.start(0)
+GPIO.output(Motor1B,True)
+GPIO.output(Motor2B,True)
+leftMotor.ChangeDutyCycle(10.0)
+rightMotor.ChangeDutyCycle(20.0)
+        
 
 def moveForward():
         GPIO.output(Motor1F,True)
@@ -98,6 +109,7 @@ def backupDemo():
 def calibrateAngle():
         turnZeroRight()
         raw_input()
+        stopBot()
 
 def testWSAD():
         moveForward()
@@ -140,8 +152,13 @@ def alexaRun:
 '''
 
 try:
-        setup()
-        calibrateAngle()
+        moveForward()
+        time.sleep(3)
+        #calibrateAngle()
+        #time.sleep(3)
+        #testWSAD()
         
 except KeyboardInterrupt:
+        leftMotor.stop()
+        rightMotor.stop()
         GPIO.cleanup()  
