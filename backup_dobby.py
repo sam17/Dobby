@@ -1,4 +1,3 @@
-import picamera
 import math
 import sys
 from Adafruit_IO import Client
@@ -6,9 +5,6 @@ from Adafruit_IO import Client
 import RPi.GPIO as GPIO
 import time
 
-def enum(**named_values):
-        return type('Enum', (), named_values)
-        
 Motor1F = 7
 Motor1P = 5
 Motor1B = 3
@@ -43,8 +39,8 @@ leftMotor.start(0)
 rightMotor.start(0)
 GPIO.output(Motor1B,True)
 GPIO.output(Motor2B,True)
-leftMotor.ChangeDutyCycle(15.0)
-rightMotor.ChangeDutyCycle(18.0)
+leftMotor.ChangeDutyCycle(float(sys.argv[1]))
+rightMotor.ChangeDutyCycle(float(sys.argv[2]))
         
 
 def moveForward():
@@ -115,15 +111,24 @@ def backupDemo():
                 aio.send('BackupDemo',7)
         elif (data.value=='2'):
                 moveBackward()
-                #time.sleep(
+                time.sleep(1)
+                aio.send('BackupDemo',7)
         elif (data.value=='3'):
-                turnZeroLeft()
+                turnToAngleL(90.0)
+                #time.sleep(1)
+                aio.send('BackupDemo',7)
         elif (data.value=='4'):
-                turnZeroRight()
+                turntoAngleR(90.0)
+                #time.sleep(1)
+                aio.send('BackupDemo',7)
         elif (data.value=='5'):
                 turnLeft()
+                time.sleep(1)
+                aio.send('BackupDemo',7)
         elif (data.value=='6'):
                 turnRight()
+                time.sleep(1)
+                aio.send('BackupDemo',7)
         elif (data.value=='7'):
                 stopBot()
         else:
@@ -188,47 +193,13 @@ def alexaRun:
                 time.sleep(1)
 '''
 
-BACK = 0
-REACHED = 1
-HOME = 2
-def jugaadDemo():
-        aio.send('GoTo1',4)
-        currentState = HOME
-        while(1):
-                data = aio.receive('GoTo1')
-                if (data.value == '1' and currentState == HOME):
-                        print('Received value: {0}'.format(data.value))
-                        turnToAngleR((180.00/math.pi)*math.acos(260.00/290.00))
-                        moveForward()                        
-                        time.sleep(2.9/0.6)
-                        stopBot()
-                        currentState  = REACHED
-                elif (data.value == '1' and currentState == REACHED):
-                        print('Received value: {0}'.format(data.value))
-                        stopBot()
-                        currentState = REACHED
-                elif(data.value == '4' and currentState == REACHED):
-                        print('Received value: {0}'.format(data.value))
-                        turnToAngleL(180.0)
-                        moveForward()
-                        time.sleep(2.9/0.6)
-                        stopBot()
-                        currentState=HOME
-                elif(data.value == '4' and currentState == HOME):
-                        print('Received value: {0}'.format(data.value))
-                        stopBot()
-                        currentState = HOME
-                elif(data.value == 'P'):
-                        print('Received value: {0}'.format(data.value))
-                        camera = picamera.PiCamera()
-                        camera.capture('/home/pi/Desktop/dobby_selfie.jpg')
-                        aio.send('GoTo1',4)
-                        
 try:
-        jugaadDemo()
-        #aio.send('BackupDemo',7)
-        #while(1):
-        #        backupDemo()
+        #turnToAngleL((180.00/math.pi)*math.acos(260.00/290.00))
+        #moveForward()
+        #time.sleep(2.9/0.6)
+        aio.send('BackupDemo',7)
+        while(1):
+                backupDemo()
 
         leftMotor.stop()
         rightMotor.stop()
