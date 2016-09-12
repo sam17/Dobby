@@ -6,7 +6,7 @@ Sequoia Hack Bot called Dobby, a personal elf robot for you to stay lazy.
 2. Using [IFTT and Adafrut IO](https://learn.adafruit.com/using-ifttt-with-adafruit-io/ifttt-to-adafruit-io-setup) for RasPi GPIO Access.
 
 #TODO
-Check (issues)[https://github.com/sam17/Dobby/issues] for new-features.
+Check [issues](https://github.com/sam17/Dobby/issues) for new-upcoming features. Feel free to add more.
 
 #Contributors
 1. [Soumyadeep Mukherjee](@sam17)  
