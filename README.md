@@ -1,7 +1,8 @@
 # DobbyBot
 Sequoia Hack Bot called Dobby, a personal elf robot for you to stay lazy.
 
-![Dobby](./img/dobby.jpg = 640)
+<center> <img src="./img/dobby.jpg" alt="dobby" width="480"> </center>
+
 
 ## Video
 
