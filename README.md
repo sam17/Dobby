@@ -6,6 +6,9 @@ Sequoia Hack Bot called Dobby, a personal elf robot for you to stay lazy.
 
 ## Video
 
+[![Dobby Video](https://img.youtube.com/vi/8CIxCHBsQ-c/0.jpg)](https://www.youtube.com/watch?v=8CIxCHBsQ-c)
+
+
 ## Current Features
 1. Voice Controlled W-S-A-D using [Amazon Alexa](https://developer.amazon.com/alexa).
 2. Using [IFTT and Adafrut IO](https://learn.adafruit.com/using-ifttt-with-adafruit-io/ifttt-to-adafruit-io-setup) for RasPi GPIO Access.
