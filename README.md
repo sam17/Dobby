@@ -8,6 +8,8 @@ Sequoia Hack Bot called Dobby, a personal elf robot for you to stay lazy.
 
 [![Dobby Video](https://img.youtube.com/vi/8CIxCHBsQ-c/0.jpg)](https://www.youtube.com/watch?v=8CIxCHBsQ-c)
 
+## Hackaday
+[Enlightened Raspberry Pi Contest](https://hackaday.io/project/16607-dobby-diy-voice-controlled-personal-assistant)
 
 ## Current Features
 1. Voice Controlled W-S-A-D using [Amazon Alexa](https://developer.amazon.com/alexa).
