@@ -2,9 +2,9 @@
 import RPi.GPIO as GPIO
 import time
 
-Motor1F = 7
-Motor1P = 5
-Motor1B = 3
+Motor1F = 18
+Motor1P = 16
+Motor1B = 12
 Motor2F = 15
 Motor2P = 13
 Motor2B = 11
